@@ -28,28 +28,29 @@ const Calculator = () => {
     }
 
     const sanitize = (input) => {
-        // For people who use , instead of . for decimals
-        const str = input.replace(',','.');
         // Avoid the process of Falsies and spaces
-        if ((!str && str !== '0') || str.includes(' ')) {
+        if ((!input && input !== '0') || input.includes(' ')) {
             return NaN;
         }
+        // For people who use , instead of . for decimals
+        const str = input.replace(',', '.');
         return Number(str);
     }
 
-    // Handle the change in the input
+    // Handles the change in the input
     const handleChangeInput = (e) => {
         setNotANumber(false);
         setTempToConvert(e.target.value);
         return setTempConverted(formula(e.target.value, unit));
     }
 
-    // Handle the change of units
+    // Handles the change of units
     const clickChangeUnit = () => {
         if (unit === "C") {
             setUnit("F");
             return setTempConverted(formula(tempToConvert, "F"));
         }
+        
         setUnit("C");
         return setTempConverted(formula(tempToConvert, "C"));
     }
