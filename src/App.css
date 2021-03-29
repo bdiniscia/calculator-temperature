@@ -1,1 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400&display=swap');
 
+.App {
+  background: linear-gradient(to top right,#ff828a 0%,#f44e92 100%);
+  height: 100vh;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  color: #3a5366;
+}
+
+.wrapper {
+  max-width: 680px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
+  padding: 57px 65px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.logo {
+  width: 80px;
+  margin-right: 1em;
+}
+
+header {
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 2em;
+}
+
+header h1 {
+  font-size: 25px;
+}
+
+.logo-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.explanation {
+  width: 80%;
+  line-height: 1.5em;
+}
+
+.data-entry {
+  display: flex;
+  flex-direction: column;
+  height: 72px;
+}
+
+.input-temperature {
+  line-height: 50px;
+  background: #fafafa;
+  box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #666;
+  transition: all .4s ease;
+  outline: none;
+  margin: 0;
+  border: none;
+}
+
+.reverse-btn {
+  width: 30px;
+  margin: 0.7em 2em;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.units {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.result {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+}
+
+.result-number {
+  width: 206px;
+  font-weight: 600;
+  font-size: 20px;
+  border-bottom: 2px solid #3a5366;
+  display: flex;
+  justify-content: center;
+}
+
+.not-a-number {
+  color: red;
+  font-size: 12px;
+  margin-top: 0.5em;
+}
