@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/calculator-temperature/static/css/main.4be013e8.chunk.css",
+    "main.js": "/calculator-temperature/static/js/main.b23e2549.chunk.js",
+    "main.js.map": "/calculator-temperature/static/js/main.b23e2549.chunk.js.map",
+    "runtime-main.js": "/calculator-temperature/static/js/runtime-main.3da463d1.js",
+    "runtime-main.js.map": "/calculator-temperature/static/js/runtime-main.3da463d1.js.map",
+    "static/js/2.2d3017a7.chunk.js": "/calculator-temperature/static/js/2.2d3017a7.chunk.js",
+    "static/js/2.2d3017a7.chunk.js.map": "/calculator-temperature/static/js/2.2d3017a7.chunk.js.map",
+    "static/js/3.3e202f2e.chunk.js": "/calculator-temperature/static/js/3.3e202f2e.chunk.js",
+    "static/js/3.3e202f2e.chunk.js.map": "/calculator-temperature/static/js/3.3e202f2e.chunk.js.map",
+    "index.html": "/calculator-temperature/index.html",
+    "static/css/main.4be013e8.chunk.css.map": "/calculator-temperature/static/css/main.4be013e8.chunk.css.map",
+    "static/js/2.2d3017a7.chunk.js.LICENSE.txt": "/calculator-temperature/static/js/2.2d3017a7.chunk.js.LICENSE.txt",
+    "static/media/logo.87ac55cd.png": "/calculator-temperature/static/media/logo.87ac55cd.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3da463d1.js",
+    "static/js/2.2d3017a7.chunk.js",
+    "static/css/main.4be013e8.chunk.css",
+    "static/js/main.b23e2549.chunk.js"
+  ]
+}
