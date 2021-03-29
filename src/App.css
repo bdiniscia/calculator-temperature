@@ -8,10 +8,11 @@
   display: flex;
   justify-content: center;
   color: #3a5366;
+  width: 100%;
 }
 
 .wrapper {
-  max-width: 680px;
+  width: 600px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 15%);
@@ -78,6 +79,7 @@ header h1 {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .units {
@@ -105,4 +107,21 @@ header h1 {
   color: red;
   font-size: 12px;
   margin-top: 0.5em;
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    width: unset;
+    margin-right: 1em;
+    margin-left: 1em;
+  }
+
+  .calculator {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reverse-btn {
+    transform: rotate(90deg)
+  }
 }

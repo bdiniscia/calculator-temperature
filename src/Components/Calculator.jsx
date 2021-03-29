@@ -7,49 +7,51 @@ const Calculator = () => {
     const [ tempToConvert, setTempToConvert ] = useState(null);
     const [ notANumber, setNotANumber ] = useState(false);
     
-    const cToF = (celsius) => {
-        const temp = sanitize(celsius);
-        if (!temp) {
+    // Formula to process the conversion 
+    const formula = (temp, unit) => {
+        let temperature = sanitize(temp);
+        // If is NaN show the flag and get out of the function
+        if (Number.isNaN(temperature)) {
             return setNotANumber(true);
         }
-        return temp * 9 / 5 + 32;
-    }
-
-    const fToC = (fahrenheit) => {
-        const temp = sanitize(fahrenheit);
-        if (!temp) {
-            return setNotANumber(true);
+        // Apply the correct formula
+        if(unit === 'C') {
+            temperature = temperature * 9 / 5 + 32
+        } else if (unit === 'F') {
+            temperature = (temperature - 32) * 5 / 9;
         }
-        return (temp - 32) * 5 / 9;
+        // Check if it's a and integer,  if not show just 1 decimal place
+        if (Number.isInteger(temperature)) {
+            return temperature;
+        }
+        return temperature.toFixed(1);
     }
 
     const sanitize = (input) => {
-        console.log('input', input);
+        // For people who use , instead of . for decimals
         const str = input.replace(',','.');
-        console.log('str', str);
+        // Avoid the process of Falsies and spaces
+        if ((!str && str !== '0') || str.includes(' ')) {
+            return NaN;
+        }
         return Number(str);
     }
 
+    // Handle the change in the input
     const handleChangeInput = (e) => {
         setNotANumber(false);
-        const temp = e.target.value;
-        console.log('temp', temp);
-        setTempToConvert(temp);
-        if (unit === "C") {
-            return setTempConverted(cToF(temp));
-        }
-        return setTempConverted(fToC(temp));
+        setTempToConvert(e.target.value);
+        return setTempConverted(formula(e.target.value, unit));
     }
 
+    // Handle the change of units
     const clickChangeUnit = () => {
-        console.log('tempToConvert', tempToConvert);
         if (unit === "C") {
             setUnit("F");
-            return setTempConverted(fToC(tempToConvert));
+            return setTempConverted(formula(tempToConvert, "F"));
         }
         setUnit("C");
-        return setTempConverted(cToF(tempToConvert));
-        
+        return setTempConverted(formula(tempToConvert, "C"));
     }
 
     return (
