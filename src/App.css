@@ -9,6 +9,7 @@
   justify-content: center;
   color: #3a5366;
   width: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .wrapper {
@@ -33,7 +34,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
   margin-bottom: 2em;
 }
 
@@ -48,7 +48,8 @@ header h1 {
 
 .explanation {
   width: 80%;
-  line-height: 1.5em;
+  line-height: 1.7em;
+  text-align: center;
 }
 
 /*------- Calculator Styles -------*/
@@ -85,7 +86,6 @@ header h1 {
 }
 
 .units {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 20px;
 }
