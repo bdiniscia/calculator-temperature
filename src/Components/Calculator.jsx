@@ -1,80 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import reverse from '../img/reverse.png';
+import { sanitize } from '../helpers';
+import styles from './Calculator.module.css';
+
+const CELSIUS = 'C';
+const FAHRENHEIT = 'F';
 
 const Calculator = () => {
-    const [ unit, setUnit ] = useState("C");
-    const [ tempConverted, setTempConverted ] = useState(null);
+    const [ unit, setUnit ] = useState(CELSIUS);
     const [ tempToConvert, setTempToConvert ] = useState(null);
-    const [ notANumber, setNotANumber ] = useState(false);
-    
-    // Formula to process the conversion 
-    const formula = (temp, unit) => {
-        let temperature = sanitize(temp);
-        // If is NaN show the flag and get out of the function
-        if (Number.isNaN(temperature)) {
-            return setNotANumber(true);
+    const [ pristine, setPristine ] = useState(true);
+
+    useEffect(() => {
+        if (!pristine) {
+            return;
         }
+        setPristine(false);
+    }, [pristine, tempToConvert]);
+
+    const notANumber = useMemo(() => !pristine && Number.isNaN(sanitize(tempToConvert)), [ pristine, tempToConvert ]);
+
+    const tempConverted = useMemo(() => {
+        const temperature = sanitize(tempToConvert);
         // Apply the correct formula
-        if(unit === 'C') {
-            temperature = temperature * 9 / 5 + 32
-        } else if (unit === 'F') {
-            temperature = (temperature - 32) * 5 / 9;
+        const convertedTemperature = unit === 'C' ? temperature * 9 / 5 + 32 : (temperature - 32) * 5 / 9;
+        if (Number.isNaN(convertedTemperature)) {
+            return '';
         }
         // Check if it's a and integer,  if not show just 1 decimal place
-        if (Number.isInteger(temperature)) {
-            return temperature;
+        if (Number.isInteger(convertedTemperature)) {
+            return convertedTemperature;
         }
-        return temperature.toFixed(1);
-    }
-
-    const sanitize = (input) => {
-        // Avoid the process of Falsies and spaces
-        if ((!input && input !== '0') || input.includes(' ')) {
-            return NaN;
-        }
-        // For people who use , instead of . for decimals
-        const str = input.replace(',', '.');
-        return Number(str);
-    }
+        return convertedTemperature.toFixed(1);
+    }, [ unit, tempToConvert ]);
 
     // Handles the change in the input
     const handleChangeInput = (e) => {
-        setNotANumber(false);
         setTempToConvert(e.target.value);
-        return setTempConverted(formula(e.target.value, unit));
     }
 
     // Handles the change of units
     const clickChangeUnit = () => {
-        if (unit === "C") {
-            setUnit("F");
-            return setTempConverted(formula(tempToConvert, "F"));
-        }
-        
-        setUnit("C");
-        return setTempConverted(formula(tempToConvert, "C"));
+        setUnit(unit === CELSIUS ? FAHRENHEIT : CELSIUS);
     }
 
     return (
-        <div className="calculator">
-            <div className="data-entry">
+        <div className={styles.calculator}>
+            <div className={styles.dataEntry}>
                 <div>
                     <input 
-                    className="input-temperature"
+                    className={styles.inputTemperature}
                     placeholder="Type your temperature" 
                     name="temperature"
-                    onChange = { e => handleChangeInput(e)}
+                    onChange={handleChangeInput}
                     />
-                    <label className="units" for="temperature"> °{unit}</label>
+                    <label className={styles.units} htmlFor="temperature"> °{unit}</label>
                 </div>
-                {notANumber && <span className="not-a-number">Please introduce a valid number</span>}
+                {notANumber && <span className={styles.notANumber}>Please introduce a valid number</span>}
             </div>
-            <img src={reverse} alt="Change units" onClick={e => clickChangeUnit(e)} className="reverse-btn"/>
-            <div className="result">
-                <div className="result-number">
+            <img src={reverse} alt="Change units" onClick={clickChangeUnit} className={styles.reverseBtn}/>
+            <div className={styles.result}>
+                <div className={styles.resultNumber}>
                     <span>{tempConverted}</span>
                 </div>
-                <span className="units">{unit === "C" ? "°F" : "°C"}</span>
+                <span className={styles.units}>{unit === CELSIUS ? "°F" : "°C"}</span>
             </div>
         </div>
     )
