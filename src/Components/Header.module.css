@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.header :global(h1) {
+    font-size: 25px;
+}
+
+.logoDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    width: 80px;
+    margin-right: 1em;
+}
+
+.explanation {
+    width: 80%;
+    line-height: 1.7em;
+    text-align: center;
+}
+

@@ -1,0 +1,68 @@
+.calculator {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.dataEntry {
+    display: flex;
+    flex-direction: column;
+    height: 72px;
+}
+
+.inputTemperature {
+    line-height: 50px;
+    background: #fafafa;
+    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    transition: all .4s ease;
+    outline: none;
+    margin: 0;
+    border: none;
+}
+
+.reverseBtn {
+    width: 30px;
+    margin: 0.7em 2em;
+}
+
+.units {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+.resultNumber {
+    width: 206px;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 2px solid #3a5366;
+    display: flex;
+    justify-content: center;
+}
+
+.notANumber {
+    color: red;
+    font-size: 12px;
+    margin-top: 0.5em;
+}
+
+@media (max-width: 800px) {
+    .calculator {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reverseBtn {
+        transform: rotate(90deg)
+    }
+}
