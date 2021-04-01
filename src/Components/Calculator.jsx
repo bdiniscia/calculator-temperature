@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import reverse from '../img/reverse.png';
 import styles from './Calculator.module.css';
+import { sanitize } from '../helper/index.js'
 
 const CELSIUS = 'C';
 const FAHRENHEIT = 'F';
 
 const Calculator = () => {
     const [ unit, setUnit ] = useState(CELSIUS);
-    const [ tempConverted, setTempConverted ] = useState(null);
     const [ tempToConvert, setTempToConvert ] = useState(null);
     
     // Formula to process the conversion 
-    const formula = (temp, unit) => {
-        const temperature = sanitize(temp);
+
+    const tempConverted = useMemo( () => {
+        const temperature = sanitize(tempToConvert);
         // If is NaN show the flag and get out of the function
-        if (Number.isNaN(temperature)) {
+        if (Number.isNaN(temperature)) { 
             return '';
         }
         // Apply the correct formula
@@ -25,33 +26,16 @@ const Calculator = () => {
             return convertedTemperature;
         }
         return convertedTemperature.toFixed(1);
-    }
-
-    const sanitize = (input) => {
-        // Avoid the process of Falsies and spaces
-        if ((!input && input !== '0') || input.includes(' ')) {
-            return NaN;
-        }
-        // For people who use , instead of . for decimals
-        const str = input.replace(',', '.');
-        return Number(str);
-    }
+    }, [ unit, tempToConvert ])
 
     // Handles the change in the input
     const handleChangeInput = (e) => {
         setTempToConvert(e.target.value);
-        return setTempConverted(formula(e.target.value, unit));
     }
 
     // Handles the change of units
     const clickChangeUnit = () => {
-        if (unit === CELSIUS) {
-            setUnit(FAHRENHEIT);
-            return setTempConverted(formula(tempToConvert, FAHRENHEIT));
-        }
-        
-        setUnit(CELSIUS);
-        return setTempConverted(formula(tempToConvert, CELSIUS));
+        setUnit(unit === CELSIUS ? FAHRENHEIT : CELSIUS);
     }
 
     return (
