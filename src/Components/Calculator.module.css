@@ -6,13 +6,13 @@
 	justify-content: center;
 }
 
-.data-entry {
+.dataEntry {
 	display: flex;
 	flex-direction: column;
 	height: 72px;
 }
 
-.input-temperature {
+.inputTemperature {
 	line-height: 50px;
 	background: #fafafa;
 	box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
@@ -26,7 +26,7 @@
 	border: none;
 }
 
-.reverse-btn {
+.reverseBtn {
 	width: 30px;
 	margin: 0.7em 2em;
 }
@@ -42,7 +42,7 @@
 	margin-top: 1em;
 }
 
-.result-number {
+.resultNumber {
 	width: 206px;
 	font-weight: 600;
 	font-size: 20px;
@@ -51,7 +51,7 @@
 	justify-content: center;
 }
 
-.not-a-number {
+.notANumber {
 	color: red;
 	font-size: 12px;
 	margin-top: 0.5em;
@@ -64,7 +64,7 @@
       align-items: center;
     }
   
-    .reverse-btn {
+    .reverseBtn {
       transform: rotate(90deg)
     }
   }
