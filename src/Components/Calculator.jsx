@@ -10,8 +10,7 @@ const Calculator = () => {
     const [ unit, setUnit ] = useState(CELSIUS);
     const [ tempToConvert, setTempToConvert ] = useState(null);
     
-    // Formula to process the conversion 
-
+    // Temperature converted
     const tempConverted = useMemo( () => {
         const temperature = sanitize(tempToConvert);
         // If is NaN show the flag and get out of the function
