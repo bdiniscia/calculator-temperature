@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import reverse from '../img/reverse.png';
-import './Calculator.css';
+import styles from './Calculator.module.css';
 
 const CELSIUS = 'C';
 const FAHRENHEIT = 'F';
